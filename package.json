@@ -15,7 +15,11 @@
     "react",
     "aem"
   ],
-  "author": "Panos Voudouris",
+  "dependencies": {
+    "yeoman-generator": "^0.22.6",
+    "yeoman-welcome": "^1.0.1"
+  },
+  "author": "Buildit - Panos Voudouris",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/panosvoudouris/generator-aem-with-react/issues"
