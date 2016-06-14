@@ -1,0 +1,24 @@
+{
+  "name": "generator-aem-with-react",
+  "version": "0.0.1",
+  "description": "Yeoman generator creating React components for use in AEM",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panosvoudouris/generator-aem-with-react.git"
+  },
+  "keywords": [
+    "yeoman",
+    "react",
+    "aem"
+  ],
+  "author": "Panos Voudouris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/panosvoudouris/generator-aem-with-react/issues"
+  },
+  "homepage": "https://github.com/panosvoudouris/generator-aem-with-react#readme"
+}
