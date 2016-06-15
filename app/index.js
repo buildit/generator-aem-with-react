@@ -20,10 +20,8 @@ module.exports = generators.Base.extend({
   // },
 
   prompting: function() {
-    console.log('hello there')
     return this.prompt( require('./prompts') ).then(
       function ( props ) {
-        console.log(props)
         this.projectName = props.projectName
         this.componentType = props.componentType
         this.componentName = props.componentName
