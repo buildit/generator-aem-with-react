@@ -54,9 +54,7 @@ module.exports = generators.Base.extend({
       this._writeStandardComponent()
     }
     this._updateIndex()
-
-    this.destinationRoot('../' + this.testDir)
-    this._updateTest()
+    this._addTest()
   },
 
   // conflicts: function() {
@@ -75,18 +73,13 @@ module.exports = generators.Base.extend({
   },
 
   // This will add the new test to the test file in the relevant atomic directory
-  _updateTest: function() {
-    // First the javascript
-    let targetComponentPath = this.destinationDir + '/' + this.componentPath
+  _addTest: function() {
     console.log( 'Creating test for ' + this.componentName )
-    mkdirp.sync(targetComponentPath)
-
     this.fs.copyTpl(
       this.templatePath('test.test.js'),
-      this.destinationPath( targetComponentPath + '/' + this.componentName + '.test.js'),
+      this.destinationPath( this.srcDir + '/' + this.componentName + '.spec.js'),
       {
-        componentName: this.componentName,
-        componentSource: '../../../' + targetComponentPath + '/' + this.componentName + '/' + this.componentName
+        componentName: this.componentName
       }
     )
   },
