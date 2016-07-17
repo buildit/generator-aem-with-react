@@ -20,7 +20,7 @@ const options = [
 const siteTypes = [
   {
     'name': '.COM',
-    'path': 'src',
+    'path': 'com',
     'test': 'test'
   },
   {
