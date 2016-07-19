@@ -27,7 +27,11 @@ module.exports = generators.Base.extend({
         this.componentName = props.componentName
         this.componentPath = options.getComponentPath(this.componentType)
         this.siteType = props.siteType
-        this.destinationDir = options.getSourcePath(this.siteType)
+        this.destinationRootDir = 'src'
+        this.srcDir = options.getSourcePath(this.siteType) + '/' +
+          this.componentPath + '/' + this.componentName
+        this.jcrDir = 'content/jcr_root/apps/' + this.projectName +
+          '/components/' + options.getSourcePath(this.siteType) + '/' + this.componentName
         this.testDir = options.getTestPath(this.siteType)
         this.acceptedTypes = props.acceptsOthers?props.acceptedTypes:false
       }.bind(this) )
@@ -42,7 +46,7 @@ module.exports = generators.Base.extend({
 
   writing: function() {
     // Setup the destination folder
-    this.destinationRoot(this.destinationDir)
+    this.destinationRoot(this.destinationRootDir)
 
     if( this.acceptedTypes !== false ) {
       this._writeDraggableComponent()
@@ -50,9 +54,7 @@ module.exports = generators.Base.extend({
       this._writeStandardComponent()
     }
     this._updateIndex()
-
-    this.destinationRoot('../' + this.testDir)
-    this._updateTest()
+    this._addTest()
   },
 
   // conflicts: function() {
@@ -71,18 +73,13 @@ module.exports = generators.Base.extend({
   },
 
   // This will add the new test to the test file in the relevant atomic directory
-  _updateTest: function() {
-    // First the javascript
-    let targetComponentPath = this.destinationDir + '/components/' + this.componentPath
+  _addTest: function() {
     console.log( 'Creating test for ' + this.componentName )
-    mkdirp.sync(targetComponentPath)
-
     this.fs.copyTpl(
       this.templatePath('test.test.js'),
-      this.destinationPath( targetComponentPath + '/' + this.componentName + '.test.js'),
+      this.destinationPath( this.srcDir + '/' + this.componentName + '.spec.js'),
       {
-        componentName: this.componentName,
-        componentSource: '../../../' + targetComponentPath + '/' + this.componentName + '/' + this.componentName
+        componentName: this.componentName
       }
     )
   },
@@ -90,7 +87,7 @@ module.exports = generators.Base.extend({
   // This will add the new component to the index.js file in the relevant atomic directory
   _updateIndex: function() {
     // Get the current file
-    let indexSourcePath = this.destinationPath( 'components/' + this.componentPath + '/index.js' )
+    let indexSourcePath = this.destinationPath( this.srcDir + '/../index.js' )
     let indexContents = this.fs.read(indexSourcePath).split('const components = [');
 
     // Create the new content
@@ -111,7 +108,7 @@ module.exports = generators.Base.extend({
   // Handle writing a component that can accept other components being dragged into it
   _writeDraggableComponent: function() {
     // First the javascript
-    let targetComponentPath = 'components/' + this.componentPath + '/' + this.componentName
+    let targetComponentPath = this.srcDir
     console.log( 'Creating ' + targetComponentPath )
     mkdirp.sync(targetComponentPath)
 
@@ -136,7 +133,7 @@ module.exports = generators.Base.extend({
     )
 
     // Finally the JCR
-    targetComponentPath = 'content/jcr_root/apps/' + this.projectName + '/components/' + this.componentName
+    targetComponentPath = this.jcrDir
 
     console.log( 'Creating ' + targetComponentPath )
     mkdirp.sync(targetComponentPath)
@@ -166,7 +163,7 @@ module.exports = generators.Base.extend({
   // Handle writing a standard component
   _writeStandardComponent: function() {
     // First the javascript
-    let targetComponentPath = 'components/' + this.componentPath + '/' + this.componentName
+    let targetComponentPath = this.srcDir
     console.log( 'Creating ' + targetComponentPath )
     mkdirp.sync(targetComponentPath)
 
@@ -191,7 +188,7 @@ module.exports = generators.Base.extend({
     )
 
     // Finally the JCR
-    targetComponentPath = 'content/jcr_root/apps/' + this.projectName + '/components/' + this.componentName
+    targetComponentPath = this.jcrDir
 
     console.log( 'Creating ' + targetComponentPath )
     mkdirp.sync(targetComponentPath)

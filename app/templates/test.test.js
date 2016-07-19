@@ -3,7 +3,7 @@ import { shallow, mount, render } from 'enzyme'
 import { expect } from 'chai'
 import sinon from 'sinon'
 
-import { default as <%= componentName %> } from '../<%= componentSource %>'
+import { default as <%= componentName %> } from './<%= componentName %>'
 
 var resource = null
 
