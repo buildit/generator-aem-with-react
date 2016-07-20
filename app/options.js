@@ -21,12 +21,12 @@ const siteTypes = [
   {
     'name': '.COM',
     'path': 'com',
-    'test': 'test'
+    'group': 'com-'
   },
   {
     'name': 'CHEF styleguide',
     'path': 'styleguide',
-    'test': 'test'
+    'group': 'sg-'
   }
 ]
 
@@ -58,10 +58,10 @@ function getSourcePath(siteType) {
   return null
 }
 
-function getTestPath(siteType) {
+function getGroup(siteType) {
   for( let i = 0; i < siteTypes.length; i++ ) {
     if( siteTypes[i].name === siteType ) {
-      return siteTypes[i].test
+      return siteTypes[i].group
     }
   }
 
@@ -83,5 +83,5 @@ module.exports = {
   getProjectName,
   getSiteTypes,
   getSourcePath,
-  getTestPath
+  getGroup
 }

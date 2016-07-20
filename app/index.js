@@ -32,7 +32,6 @@ module.exports = generators.Base.extend({
           this.componentPath + '/' + this.componentName
         this.jcrDir = 'content/jcr_root/apps/' + this.projectName +
           '/components/' + options.getSourcePath(this.siteType) + '/' + this.componentName
-        this.testDir = options.getTestPath(this.siteType)
         this.acceptedTypes = props.acceptsOthers?props.acceptedTypes:false
       }.bind(this) )
   },
@@ -146,7 +145,7 @@ module.exports = generators.Base.extend({
       this.templatePath('draggable/apps/.content.xml'),
       this.destinationPath( targetComponentPath + '/.content.xml'),
       { componentName: this.componentName,
-        componentType: 'React ' + this.componentType }
+        componentGroup: options.getGroup(this.siteType) + this.componentType }
     )
     this.fs.copyTpl(
       this.templatePath('draggable/apps/component.jsx'),
@@ -197,7 +196,7 @@ module.exports = generators.Base.extend({
       this.templatePath('standard/apps/.content.xml'),
       this.destinationPath( targetComponentPath + '/.content.xml'),
       { componentName: this.componentName,
-        componentType: 'React ' + this.componentType }
+        componentGroup: options.getGroup(this.siteType) + this.componentType }
     )
     this.fs.copyTpl(
       this.templatePath('standard/apps/component.jsx'),

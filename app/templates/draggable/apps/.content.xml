@@ -4,4 +4,4 @@
           jcr:title="<%= componentName %>"
           allowedChildren="[*]"
           cq:isContainer="true"
-          componentGroup="<%= componentType %>"/>
+          componentGroup="<%= componentGroup %>"/>
