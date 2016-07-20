@@ -1,6 +1,6 @@
 {
   "name": "generator-aem-with-react",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Yeoman generator creating React components for use in AEM",
   "files": [
     "app"
