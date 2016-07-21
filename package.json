@@ -5,7 +5,13 @@
   "files": [
     "app"
   ],
-  "author": "Panos Voudouris <panosvoudouris@gmail.com> (https://github.com/panosvoudouris)",
+  "author": "Buildit",
+  "contributors": [{
+    "name": "Panos Voudouris",
+    "email": "panagiotis.voudouris@wipro.com",
+    "url": "https://github.com/panosvoudouris"
+  }],
+  "licence": "ISC",
   "scripts": {},
   "repository": {
     "type": "git",
@@ -20,7 +26,6 @@
   "dependencies": {
     "yeoman-generator": "^0.23.3"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/panosvoudouris/generator-aem-with-react/issues"
   },
