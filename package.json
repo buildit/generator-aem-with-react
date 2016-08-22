@@ -17,7 +17,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/panosvoudouris/generator-aem-with-react.git"
+    "url": "https://github.com/buildit/generator-aem-with-react.git"
   },
   "keywords": [
     "yeoman-generator",
@@ -29,7 +29,7 @@
     "yeoman-generator": "^0.23.3"
   },
   "bugs": {
-    "url": "https://github.com/panosvoudouris/generator-aem-with-react/issues"
+    "url": "https://github.com/buildit/generator-aem-with-react/issues"
   },
-  "homepage": "https://github.com/panosvoudouris/generator-aem-with-react#readme"
+  "homepage": "https://github.com/buildit/generator-aem-with-react#readme"
 }
